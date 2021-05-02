@@ -1,25 +1,39 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class Department implements Serializable {
+public class Seller implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	// Atributos
 	private Integer id;
 	private String name;
+	private String email;
+	private Date birthDate;
+	private Double baseSalary;
+
+	// Atributo que faz composição com Departamentos
+	private Department department;
 
 	// Construtores
 	// Padrão
-	public Department() {
+	public Seller() {
 	}
+
 	// Com argumentos
-	public Department(Integer id, String name) {
+	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
+		super();
 		this.id = id;
 		this.name = name;
+		this.email = email;
+		this.birthDate = birthDate;
+		this.baseSalary = baseSalary;
+		this.department = department;
 	}
 
 	// Getteres e Setters
@@ -37,6 +51,42 @@ public class Department implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Double getBaseSalary() {
+		return baseSalary;
+	}
+
+	public void setBaseSalary(Double baseSalary) {
+		this.baseSalary = baseSalary;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	// hashCode e equals para que os métodos possam ser comparados pelo conteúdo e
@@ -57,7 +107,7 @@ public class Department implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Department other = (Department) obj;
+		Seller other = (Seller) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -69,7 +119,8 @@ public class Department implements Serializable {
 	// toString, para ter uma facilidade para imprimir os objetos
 	@Override
 	public String toString() {
-		return "Department [id=" + id + ", name=" + name + "]";
+		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
+				+ baseSalary + ", department=" + department + "]";
 	}
 
 	// Implements Serializable, para os objetos poderem serem transformados em
